@@ -1,0 +1,45 @@
+/* SCOREBOARD */
+#scoreboard-goals {
+    background-color: black;
+    color: yellow;
+    font-family: 'Digital-7 Mono', 'digital-7', 'digital-7 mono', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.scoreboard {
+    width: 300px;
+    background-color: black;
+    color: yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.country {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.country img {
+    width: 150px;
+    height: auto;
+}
+
+.score {
+    font-size: 8em;
+    margin: 10px 0;
+}
+
+.versus {
+    background-color: yellow;
+    height: 5px;
+    width: 50%;
+}

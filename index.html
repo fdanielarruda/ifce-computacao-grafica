@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Campo de Futebol em 3D</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/game.css">
+    <link rel="stylesheet" type="text/css" href="css/scoreboard.css">
+</head>
+
+<body>
+    <div id="game-page">
+        <div id="scoreboard-goals" class="float-left">
+            <div class="scoreboard">
+                <div class="country">
+                    <img src="flags/brasil.png" alt="Bandeira do Brasil">
+                </div>
+                <div class="score">2</div>
+                <div class="versus"></div>
+                <div class="score">0</div>
+                <div class="country">
+                    <img src="flags/argentina.png" alt="Bandeira da Argentina">
+                </div>
+            </div>
+        </div>
+
+        <div id="soccer_pitch" class="float-left">
+            <img src="images/goal.jpg" id="goal_image">
+            <img src="images/arrow_small.png" id="arrow_image">
+        </div>
+
+        <div id="controls" class="float-left">
+            <div class="joystick" id="joystick"></div>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+    <script src="js/executable.js"></script>
+</body>
+
+</html>
