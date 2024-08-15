@@ -2,6 +2,7 @@
 #controls {
     width: 200px;
     text-align: center;
+    position: relative; /* Adiciona posicionamento relativo para o canvas */
 }
 
 .joystick {
@@ -10,9 +11,17 @@
     height: 90px;
     background-color: red;
     border-radius: 50%;
-    top: 600px;
-    left: 0px;
     box-shadow: 0px 5px 10px 0px silver;
+}
+
+/* Ajusta o canvas para aparecer ao lado do botão vermelho */
+#intensity-canvas {
+    position: absolute;
+    bottom: 0;
+    left: 100px;
+    width: 100px;
+    height: 200px;
+    border: 1px solid #000;
 }
 
 /* GAME */
@@ -21,7 +30,7 @@
     text-align: center;
     width: 800px;
     height: 600px;
-    position: relative;
+    position: relative; /* Garante que os elementos internos sejam posicionados relativamente a este contêiner */
 }
 
 #soccer_pitch img#goal_image {
@@ -33,6 +42,24 @@
     width: 30px;
     height: 30px;
     position: absolute;
-    top: 500px;
-    left: 0px;
+    bottom: 10px; /* Define a distância da parte inferior do contêiner */
+    left: 10px; /* Ajuste a posição horizontal conforme necessário */
+}
+
+/* Gauge Chart */
+#intensity-chart {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 150px; /* Ajuste conforme necessário */
+    height: 150px; /* Ajuste conforme necessário */
+    display: none; /* Oculta o gráfico inicialmente */
+}
+
+#ball_image {
+    width: 50px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%; /* Ponto de partida central */
+    transform: translateX(-50%);
 }

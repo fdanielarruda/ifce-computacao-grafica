@@ -27,6 +27,12 @@
         <div id="soccer_pitch" class="float-left">
             <img src="images/goal.jpg" id="goal_image">
             <img src="images/arrow_small.png" id="arrow_image">
+            <img src="images/ball.webp" id="ball_image" alt="Bola no centro do gol">
+
+             <!-- Gráfico de Intensidade -->
+            <div id="intensity-bar-container" style="display: none;">
+                <div id="intensity-bar"></div>
+            </div>
         </div>
 
         <div id="controls" class="float-left">
@@ -34,8 +40,10 @@
         </div>
     </div>
 
-    <script src="js/game.js"></script>
-    <script src="js/executable.js"></script>
+    <!-- Scripts -->
+    <script type="module" src="js/game.js"></script>
+    <script type="module" src="js/gauge.js"></script>
+    <script type="module" src="js/executable.js"></script>
 </body>
 
 </html>

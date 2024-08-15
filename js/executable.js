@@ -1,65 +1,68 @@
-document.getElementById('joystick').addEventListener('click', clickButton);
+import { initIntensityBar } from './game.js';
 
-const left = 0;
-const right = 800;
+// Referências aos elementos
+const intensityBarContainer = document.getElementById('intensity-bar-container');
+const intensityBar = document.getElementById('intensity-bar');
+const arrow = document.getElementById('arrow_image');
+const ball = document.getElementById('ball_image');
 
-let dataElements = {
-    x: 500,
-    y: left,
-    move: true,
-    to: right
-};
+let isFirstClick = true;
+let lastIntensity = 0;
+let lastDirection = '0px'; // Variável para armazenar a última direção da seta
 
+// Função para lidar com o clique no joystick
 function clickButton() {
-    dataElements.move = false;
+    if (isFirstClick) {
+        // Primeiro clique: inicializa a barra de intensidade
+        initIntensityBar();
+        isFirstClick = false;
+    } else {
+        // Segundo clique: coleta e exibe as informações
+        const direction = arrow.style.left || '0px'; // Direção da seta
+        const intensity = intensityBar.style.width || '0%'; // Intensidade da barra
+
+        lastDirection = direction;
+        lastIntensity = parseFloat(intensity); // Remove a unidade '%' e converte para número
+
+        console.log(`Direção: ${lastDirection}`);
+        console.log(`Intensidade: ${lastIntensity}%`);
+        
+        // Lança a bola
+        launchBall();
+
+        // Reinicia o estado para o próximo clique
+        isFirstClick = true;
+        intensityBarContainer.style.display = 'none'; // Oculta a barra de intensidade
+    }
 }
 
-function moveArrow(x, y) {
-    const arrow = document.querySelector('#arrow_image');
-    arrow.style.transition = 'all 1ms';
-    arrow.style.top = x + 'px';
-    arrow.style.left = y + 'px';
-}
+// Função para lançar a bola
+function launchBall() {
+    const directionInPixels = parseFloat(lastDirection); // Converte a direção para número
+    const intensityFactor = lastIntensity / 100; // Converte intensidade para um valor entre 0 e 1
 
-function moveElements() {
-    let lastTime = 0;
+    let ballX = directionInPixels; // Posição inicial horizontal
+    let ballY = 10; // Posição inicial vertical (bottom)
 
-    function step(timestamp) {
-        if (!dataElements.move) {
-            return;
+    const directionMultiplier = directionInPixels > 400 ? 1 : -1; // Define se a bola vai para a direita ou esquerda
+
+    function moveBall() {
+        // A bola se move com base na intensidade e direção
+        ballX += directionMultiplier * intensityFactor * 10; // Aumenta a velocidade baseado na intensidade
+        ballY += intensityFactor * 5; // Aumenta o movimento vertical
+
+        // Atualiza a posição da bola no DOM
+        ball.style.left = `${ballX}px`; // Move a bola horizontalmente
+        ball.style.bottom = `${ballY}px`; // Move a bola verticalmente
+
+        // Continua movendo a bola até que ela atinja o gol
+        if (ballY < 300) { // Limite de altura (ponto de impacto do gol)
+            requestAnimationFrame(moveBall);
         }
-
-        if (!lastTime) {
-            lastTime = timestamp;
-        }
-
-        const elapsed = timestamp - lastTime;
-
-        if (elapsed > 1) { // Ajuste para a frequência de atualização desejada
-            if (dataElements.to === right) {
-                dataElements.y += 15;
-                if (dataElements.y >= right) {
-                    dataElements.y = right;
-                    dataElements.to = left;
-                }
-            } else {
-                dataElements.y -= 15;
-                if (dataElements.y <= left) {
-                    dataElements.y = left;
-                    dataElements.to = right;
-                }
-            }
-
-            moveArrow(dataElements.x, dataElements.y);
-
-            lastTime = timestamp;
-        }
-
-        requestAnimationFrame(step);
     }
 
-    requestAnimationFrame(step);
+    requestAnimationFrame(moveBall); // Inicia a animação
 }
 
-// Inicializa a animação
-moveElements();
+// Adiciona o ouvinte de eventos
+document.getElementById('joystick').addEventListener('click', clickButton);

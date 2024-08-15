@@ -8,10 +8,12 @@
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 0 10px; /* Adiciona um pouco de padding para evitar que o conteúdo fique muito perto das bordas */
 }
 
 .scoreboard {
-    width: 300px;
+    width: 100%;
+    max-width: 300px; /* Define um tamanho máximo para manter o layout consistente */
     background-color: black;
     color: yellow;
     display: flex;
@@ -29,7 +31,8 @@
 }
 
 .country img {
-    width: 150px;
+    width: 100%; /* Ajusta a largura das bandeiras para 100% do contêiner */
+    max-width: 150px; /* Define um tamanho máximo para as bandeiras */
     height: auto;
 }
 
@@ -42,4 +45,14 @@
     background-color: yellow;
     height: 5px;
     width: 50%;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+    .score {
+        font-size: 5em; /* Reduz o tamanho da fonte para telas menores */
+    }
+    .country img {
+        max-width: 100px; /* Reduz o tamanho das bandeiras em telas menores */
+    }
 }
