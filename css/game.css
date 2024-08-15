@@ -24,16 +24,39 @@
 
 /* GAME */
 #soccer_pitch {
+    background-image: url("../images/stadium_bottom2.png");
+    background-size: cover; /* Faz com que a imagem cubra todo o contêiner */
+    background-position: center; /* Centraliza a imagem no contêiner */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    width: 60%;
     margin-top: 80px;
     text-align: center;
-    width: 800px;
     height: 600px;
     position: relative; /* Garante que os elementos internos sejam posicionados relativamente a este contêiner */
 }
 
-#soccer_pitch img#goal_image {
+#soccer_goal {
+    height: 300px;
     width: 100%;
-    height: 100%;
+    position: relative;
+}
+
+#soccer_goal img {
+    background-color: #91B61D;
+    position: absolute;
+    bottom: 0; /* Alinha a imagem com o fundo da div */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta a imagem para estar centralizada */
+}
+
+#soccer_green {
+    background-image: url("../images/stadium_bottom3.png");
+    height: 300px;
+    width: 100%;
+}
+
+#goal_small {
+    width: 400px;
 }
 
 #arrow_image {
