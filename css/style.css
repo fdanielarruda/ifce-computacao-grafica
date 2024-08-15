@@ -18,11 +18,40 @@ body {
     float: left;
 }
 
+/* Estilo geral para a página do jogo */
 #game-page {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinha todos os itens no centro horizontalmente */
+    justify-content: center; /* Alinha todos os itens no centro verticalmente */
+    height: 100vh; /* Faz com que o contêiner ocupe toda a altura da tela */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para o contêiner do gol */
+#goal-container {
+    width: 100%; /* Faz o contêiner do gol ocupar toda a largura da página */
+    display: flex;
+    justify-content: center; /* Centraliza o placar horizontalmente */
+    position: absolute; /* Permite posicionar o placar em relação ao contêiner do gol */
+    top: 10px; /* Ajusta a distância do topo conforme necessário */
+    left: 0;
+    right: 0;
+}
+
+/* Estilo para o campo de futebol */
+#soccer_pitch {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinha o campo de futebol no centro horizontalmente */
+    justify-content: center; /* Alinha o campo de futebol no centro verticalmente */
+    position: relative; /* Permite que o contêiner de futebol se posicione em relação ao seu contêiner pai */
+}
+
+/* Estilo para o controle */
+#controls {
+    margin-top: 20px; /* Adiciona um espaço acima dos controles */
 }
 
 /* Barra de Intensidade */

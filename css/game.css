@@ -1,12 +1,10 @@
 /* CONTROLS */
 #controls {
-    width: 200px;
     text-align: center;
     position: relative; /* Adiciona posicionamento relativo para o canvas */
 }
 
 .joystick {
-    margin-top: 200px;
     width: 90px;
     height: 90px;
     background-color: red;
